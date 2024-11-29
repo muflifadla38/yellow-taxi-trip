@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_URL = "http://localhost:4000/api/v1" || process.env.REACT_APP_API_URL;
+const API_URL = process.env.REACT_APP_API_URL || "https://yellow-taxi-trip-api.vercel.app/api/v1";
 
 export const tripService = {
   getTrips: async (params) => {
