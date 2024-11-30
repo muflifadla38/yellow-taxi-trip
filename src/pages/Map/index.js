@@ -29,7 +29,7 @@ const MapPage = () => {
   };
 
   return (
-    <div className="container px-2 mx-auto md:px-4">
+    <div className="px-2 mx-auto md:px-4">
       <Filter fetchData={fetchTrips} setLoading={setLoading} />
 
       <div className="h-[70vh] relative">
