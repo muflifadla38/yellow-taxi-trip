@@ -26,18 +26,18 @@ A fullstack applcation that analyzes and visualizes New York City yellow taxi tr
 ## Getting Started
 
 1. Clone the repository
-```bash
-git clone https://github.com/muflifadla38/yellow-taxi-trip.git
+    ```bash
+    git clone https://github.com/muflifadla38/yellow-taxi-trip.git
 
 2. Install dependencies
-```bash
-cd yellow-taxi-trip
-npm install
+    ```bash
+    cd yellow-taxi-trip
+    npm install
 
 3. Set up environment variables
-```bash
-cp .env.example .env
+    ```bash
+    cp .env.example .env
 
 4. Start the server
-```bash
-npm run start
+    ```bash
+    npm run start
