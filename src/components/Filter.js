@@ -1,10 +1,11 @@
 import "react-datepicker/dist/react-datepicker.css";
 import PropTypes from "prop-types";
 import DatePicker from "react-datepicker";
-import { CrossIcon, FilterIcon } from "../components/Icons";
 import { useState } from "react";
+import { formatLocalDateTime } from "../utils/helper";
+import { CrossIcon, FilterIcon } from "../components/Icons";
 
-const Filter = ({ fetchData, setLoading }) => {
+const Filter = ({ defaultDate, fetchData, setLoading }) => {
   const [showMobileFilters, setShowMobileFilters] = useState(false);
   const limits = [15, 25, 35, 50, 100];
   const paymentTypes = [
@@ -16,13 +17,13 @@ const Filter = ({ fetchData, setLoading }) => {
   ];
 
   const [filters, setFilters] = useState({
-    pickupDate: new Date("2014-01-01"),
-    dropoffDate: new Date("2014-01-01"),
-    minFare: "",
-    maxFare: "",
-    minDistance: "",
-    maxDistance: "",
-    paymentType: "",
+    pickupDate: null,
+    dropoffDate: null,
+    minFare: null,
+    maxFare: null,
+    minDistance: null,
+    maxDistance: null,
+    paymentType: null,
     limit: limits[0],
   });
 
@@ -34,10 +35,10 @@ const Filter = ({ fetchData, setLoading }) => {
 
     const params = {
       ...(filters.pickupDate && {
-        pickupDatetime: filters.pickupDate.toISOString().slice(0, -1),
+        pickupDatetime: filters.pickupDate,
       }),
       ...(filters.dropoffDate && {
-        dropoffDatetime: filters.dropoffDate.toISOString().slice(0, -1),
+        dropoffDatetime: filters.dropoffDate,
       }),
       ...(filters.minFare && {
         minFareAmount: Number(filters.minFare),
@@ -93,6 +94,8 @@ const Filter = ({ fetchData, setLoading }) => {
               selected={filters.pickupDate}
               popperClassName="some-custom-class"
               popperPlacement="top-end"
+              minDate={new Date("2014-01-01T00:00:00.000")}
+              maxDate={new Date("2014-12-31T00:00:00.000")}
               showTimeInput
               timeInputLabel="Time:"
               dateFormat="MM/dd/yyyy HH:mm"
@@ -103,7 +106,10 @@ const Filter = ({ fetchData, setLoading }) => {
                 },
               }}
               onChange={(date) =>
-                handleFilterChange({ ...filters, pickupDate: date })
+                handleFilterChange({
+                  ...filters,
+                  pickupDate: date && formatLocalDateTime(date),
+                })
               }
               placeholderText="Start Date"
               className="w-full p-2 border rounded focus:ring-blue-500 focus:border-blue-500"
@@ -115,12 +121,17 @@ const Filter = ({ fetchData, setLoading }) => {
             </label>
             <DatePicker
               selected={filters.dropoffDate}
+              minDate={new Date("2014-01-01T00:00:00.000")}
+              maxDate={new Date("2014-12-31T00:00:00.000")}
               showTimeInput
               timeInputLabel="Time:"
               dateFormat="MM/dd/yyyy HH:mm"
               isClearable
               onChange={(date) =>
-                handleFilterChange({ ...filters, dropoffDate: date })
+                handleFilterChange({
+                  ...filters,
+                  dropoffDate: date && formatLocalDateTime(date),
+                })
               }
               placeholderText="End Date"
               className="w-full p-2 border rounded focus:ring-blue-500 focus:border-blue-500"
