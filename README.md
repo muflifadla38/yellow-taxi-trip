@@ -34,9 +34,9 @@ A fullstack applcation that analyzes and visualizes New York City yellow taxi tr
     cd yellow-taxi-trip
     npm install
 
-3. Set up environment variables
+3. Create a `.env` file in the root directory and add:
     ```bash
-    cp .env.example .env
+    REACT_APP_API_URL=http://localhost:4000/api/v1
 
 4. Start the server
     ```bash
