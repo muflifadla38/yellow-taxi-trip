@@ -11,8 +11,6 @@ const MapPage = () => {
 
   useEffect(() => {
     fetchTrips({
-      pickupDate: new Date("2014-01-01"),
-      dropoffDate: new Date("2014-01-01"),
       limit: 15,
     });
   }, []);
