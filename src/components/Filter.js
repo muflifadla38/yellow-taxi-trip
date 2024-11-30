@@ -93,6 +93,9 @@ const Filter = ({ fetchData, setLoading }) => {
               selected={filters.pickupDate}
               popperClassName="some-custom-class"
               popperPlacement="top-end"
+              showTimeInput
+              timeInputLabel="Time:"
+              dateFormat="MM/dd/yyyy HH:mm"
               isClearable
               popperModifiers={{
                 preventOverflow: {
@@ -112,6 +115,9 @@ const Filter = ({ fetchData, setLoading }) => {
             </label>
             <DatePicker
               selected={filters.dropoffDate}
+              showTimeInput
+              timeInputLabel="Time:"
+              dateFormat="MM/dd/yyyy HH:mm"
               isClearable
               onChange={(date) =>
                 handleFilterChange({ ...filters, dropoffDate: date })
