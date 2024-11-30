@@ -39,6 +39,21 @@ export const formatDate = (dateString) => {
   });
 };
 
+export const formatLocalDateTime = (date) => {
+  return date
+    .toLocaleString("sv", {
+      year: "numeric",
+      month: "2-digit",
+      day: "2-digit",
+      hour: "2-digit",
+      minute: "2-digit",
+      second: "2-digit",
+      fractionalSecondDigits: 3,
+    })
+    .replace(" ", "T")
+    .replace(",", ".");
+};
+
 export const showAlert = (status, message) => {
   const isError = status !== 200;
 
