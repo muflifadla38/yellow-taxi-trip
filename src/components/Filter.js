@@ -145,6 +145,7 @@ const Filter = ({ defaultDate, fetchData, setLoading }) => {
             <div className="flex gap-2">
               <input
                 type="number"
+                step="any"
                 placeholder="Min"
                 value={filters.minFare}
                 onChange={(e) =>
@@ -154,6 +155,7 @@ const Filter = ({ defaultDate, fetchData, setLoading }) => {
               />
               <input
                 type="number"
+                step="any"
                 placeholder="Max"
                 value={filters.maxFare}
                 onChange={(e) =>
@@ -171,6 +173,7 @@ const Filter = ({ defaultDate, fetchData, setLoading }) => {
             <div className="flex gap-2">
               <input
                 type="number"
+                step="any"
                 placeholder="Min"
                 value={filters.minDistance}
                 onChange={(e) =>
@@ -183,6 +186,7 @@ const Filter = ({ defaultDate, fetchData, setLoading }) => {
               />
               <input
                 type="number"
+                step="any"
                 placeholder="Max"
                 value={filters.maxDistance}
                 onChange={(e) =>
